@@ -2,7 +2,6 @@ package validparentheses;
 
 public class ValidParentheses {
 
-    // Custom Stack class using an array
     static class Stack {
         private char[] stackArray;
         private int top;
@@ -24,7 +23,7 @@ public class ValidParentheses {
             if (!isEmpty()) {
                 return stackArray[top--];
             } else {
-                return '\0'; // return null char if empty
+                return '\0';
             }
         }
 
@@ -33,18 +32,16 @@ public class ValidParentheses {
         }
     }
 
-    // Function to check if the string has valid brackets
     public static boolean isValid(String s) {
         Stack stack = new Stack(s.length());
 
         for (int i = 0; i < s.length(); i++) {
             char current = s.charAt(i);
 
-            // Push opening brackets onto the stack
             if (current == '(' || current == '{' || current == '[') {
                 stack.push(current);
             } else {
-                // If stack is empty or doesn't match the correct opening bracket
+
                 if (stack.isEmpty()) return false;
                 char top = stack.pop();
 
@@ -56,16 +53,14 @@ public class ValidParentheses {
             }
         }
 
-        // If stack is empty at the end, all brackets matched
         return stack.isEmpty();
     }
 
-    // Main method to test with inputs
     public static void main(String[] args) {
-        System.out.println("Input: \"()\" -> Output: " + isValid("()"));           // true
-        System.out.println("Input: \"()[]{}\" -> Output: " + isValid("()[]{}"));   // true
-        System.out.println("Input: \"(]\" -> Output: " + isValid("(]"));           // false
-        System.out.println("Input: \"([)]\" -> Output: " + isValid("([)]"));       // false
-        System.out.println("Input: \"{[]}\" -> Output: " + isValid("{[]}"));       // true
+        System.out.println("Input: \"()\" -> Output: " + isValid("()"));     
+        System.out.println("Input: \"()[]{}\" -> Output: " + isValid("()[]{}"));   
+        System.out.println("Input: \"(]\" -> Output: " + isValid("(]"));           
+        System.out.println("Input: \"([)]\" -> Output: " + isValid("([)]"));      
+        System.out.println("Input: \"{[]}\" -> Output: " + isValid("{[]}"));       
     }
 }
